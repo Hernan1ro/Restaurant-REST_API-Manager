@@ -39,8 +39,18 @@ function guardarCliente() {
   modalBootstrap.hide();
 
   // Mostrar las secciones
-
   mostrarSecciones();
+
+  // Consumir datos de la API
+  obtenerPlatillos();
+}
+
+function obtenerPlatillos() {
+  const url = "http://localhost:4000/platillos";
+  fetch(url)
+    .then((res) => res.json())
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 }
 
 function mostrarSecciones() {
