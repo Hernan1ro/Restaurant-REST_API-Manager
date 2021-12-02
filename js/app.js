@@ -49,8 +49,23 @@ function obtenerPlatillos() {
   const url = "http://localhost:4000/platillos";
   fetch(url)
     .then((res) => res.json())
-    .then((res) => console.log(res))
+    .then((res) => mostrarPlatillos(res))
     .catch((err) => console.log(err));
+}
+
+function mostrarPlatillos(platillos) {
+  const contenido = document.querySelector("#platillos .contenido");
+  platillos.forEach((platillo) => {
+    const row = document.createElement("div");
+    row.classList.add("row");
+
+    const nombre = document.createElement("div");
+    nombre.classList.add("col-md-4");
+    nombre.textContent = platillo.nombre;
+
+    row.appendChild(nombre);
+    contenido.appendChild(row);
+  });
 }
 
 function mostrarSecciones() {
