@@ -121,6 +121,7 @@ function agregarPlatillo(producto) {
     }
     console.log(cliente.pedido);
   } else {
-    console.log("No añadiendo producto");
+    const resultado = cliente.pedido.filter((item) => item.id !== producto.id);
+    cliente.pedido = [...resultado];
   }
 }
