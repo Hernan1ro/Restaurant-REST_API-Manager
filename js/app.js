@@ -124,4 +124,33 @@ function agregarPlatillo(producto) {
     const resultado = cliente.pedido.filter((item) => item.id !== producto.id);
     cliente.pedido = [...resultado];
   }
+  actualizarResumen();
+}
+
+function actualizarResumen() {
+  const contenido = document.querySelector("#resumen .contenido");
+  const resumen = document.createElement("div");
+  resumen.classList.add("col-md-6");
+  //Imprimir mesa
+  const mesa = document.createElement("p");
+  mesa.textContent = "Mesa: ";
+  mesa.classList.add("fw-bold");
+
+  const mesaSpan = document.createElement("span");
+  mesaSpan.classList.add("fw-normal");
+  mesaSpan.textContent = cliente.mesa;
+  //Imprimir hora
+  const hora = document.createElement("p");
+  hora.textContent = "Hora: ";
+  hora.classList.add("fw-bold");
+
+  const horaSpan = document.createElement("span");
+  horaSpan.classList.add("fw-normal");
+  horaSpan.textContent = cliente.hora;
+
+  mesa.appendChild(mesaSpan);
+  hora.appendChild(horaSpan);
+
+  contenido.appendChild(mesa);
+  contenido.appendChild(hora);
 }
