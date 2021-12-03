@@ -109,7 +109,16 @@ function mostrarSecciones() {
 
 function agregarPlatillo(producto) {
   if (producto.cantidad > 0) {
-    cliente.pedido = [...cliente.pedido, producto];
+    // Revisar que el pedido no esté repetido
+    if (cliente.pedido.some((item) => item.id === producto.id)) {
+      cliente.pedido.map((item) => {
+        if (item.id === producto.id) {
+          return (item.cantidad = producto.cantidad);
+        }
+      });
+    } else {
+      cliente.pedido = [...cliente.pedido, producto];
+    }
     console.log(cliente.pedido);
   } else {
     console.log("No añadiendo producto");
