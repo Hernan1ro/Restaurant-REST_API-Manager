@@ -89,7 +89,6 @@ function mostrarPlatillos(platillos) {
       const cantidad = parseInt(inputCantidad.value);
       agregarPlatillo({ ...platillo, cantidad });
     };
-    ñ;
 
     const agregar = document.createElement("div");
     agregar.classList.add("col-md-2");
@@ -109,5 +108,10 @@ function mostrarSecciones() {
 }
 
 function agregarPlatillo(producto) {
-  console.log(producto);
+  if (producto.cantidad > 0) {
+    cliente.pedido = [...cliente.pedido, producto];
+    console.log(cliente.pedido);
+  } else {
+    console.log("No añadiendo producto");
+  }
 }
