@@ -135,7 +135,7 @@ function agregarPlatillo(producto) {
 function actualizarResumen() {
   const contenido = document.querySelector("#resumen .contenido");
   const resumen = document.createElement("div");
-  resumen.classList.add("col-md-6", "py-5", "card", "px-3", "shadow");
+  resumen.classList.add("col-md-6", "py-2", "card", "px-3", "shadow");
   //Imprimir mesa
   const mesa = document.createElement("p");
   mesa.textContent = "Mesa: ";
@@ -154,7 +154,7 @@ function actualizarResumen() {
   horaSpan.textContent = cliente.hora;
 
   const heading = document.createElement("h3");
-  heading.classList.add("my-4");
+  heading.classList.add("my-4", "text-center");
   heading.textContent = "Platillos consumidos";
 
   // Iterar sobre los pedidos para mostralos en pantalla
@@ -224,14 +224,18 @@ function actualizarResumen() {
     grupo.appendChild(lista);
   });
 
+  resumen.appendChild(heading);
   mesa.appendChild(mesaSpan);
   hora.appendChild(horaSpan);
   resumen.appendChild(mesa);
   resumen.appendChild(hora);
-  resumen.appendChild(heading);
   resumen.appendChild(grupo);
 
   contenido.appendChild(resumen);
+
+  // Mostrar formulario de propinas
+
+  formularioPropinas();
 }
 
 function limpiarHTML() {
@@ -275,4 +279,22 @@ function mensajePedidoVacio() {
   texto.textContent = "Añade los elementos del pedido";
 
   contenido.appendChild(texto);
+}
+
+function formularioPropinas() {
+  const contenido = document.querySelector("#resumen .contenido");
+
+  const formulario = document.createElement("div");
+  formulario.classList.add("col-md-6", "formulario");
+
+  const divFormulario = document.createElement("div");
+  divFormulario.classList.add("card", "py-2", "px-3", "shadow");
+
+  const heading = document.createElement("h3");
+  heading.classList.add("my-4", "text-center");
+  heading.textContent = "Propina";
+
+  divFormulario.appendChild(heading);
+  formulario.appendChild(divFormulario);
+  contenido.appendChild(formulario);
 }
