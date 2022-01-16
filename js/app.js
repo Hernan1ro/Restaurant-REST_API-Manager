@@ -52,7 +52,7 @@ function guardarCliente() {
 }
 
 function obtenerPlatillos() {
-  const url = "http://localhost:4000/platillos";
+  const url = "http://localhost:3000/platillos";
   fetch(url)
     .then((res) => res.json())
     .then((res) => mostrarPlatillos(res))
